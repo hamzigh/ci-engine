@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/v1/job")
+@RequestMapping("/v1/jobs")
 public class JobController {
 
     @GetMapping("{jobId}")
@@ -16,10 +16,10 @@ public class JobController {
         return ResponseEntity.ok(Map.of("jobId", jobId));
     }
 
-    @PostMapping("submit")
-    public ResponseEntity<Object> submitJobQueue(@Valid @RequestBody JobSubmissionRequest request) {
+    @PostMapping()
+    public ResponseEntity<Object> submitJob(@Valid @RequestBody JobSubmissionRequest request) {
 
-        return ResponseEntity.ok(request);
+        return ResponseEntity.accepted().body(request);
     }
 
 }
